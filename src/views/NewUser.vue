@@ -47,6 +47,10 @@
 
 
 <script>
+
+  import axios from 'axios'
+
+
   export default {
     data: () => ({
       valid: true,
@@ -82,8 +86,26 @@
         this.$refs.form.resetValidation()
       },
     },
+      mounted () {
+    axios
+      .post('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(response => (this.info = response))
+  },
+    created() {
+    // POST request using axios with error handling
+    const user = { title: "Vue POST Request Example" };
+    axios.post("https://reqres.in/invalid-url", article)
+      .then(response => this.articleId = response.data.id)
+      .catch(error => {
+        this.errorMessage = error.message;
+        console.error("There was an error!", error);
+      });
+}
   }
 </script>
+
+// nome / cpfcnpj / email / telefone / telefone 2 / endereço - bairro cidade estado
+
 
 
 <style>
