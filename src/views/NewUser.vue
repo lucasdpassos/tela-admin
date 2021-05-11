@@ -11,7 +11,7 @@
       v-model="name"
       :counter="10"
       :rules="nameRules"
-      label="Nome Completo"
+      label="Nome"
       required
     ></v-text-field>
 
@@ -31,12 +31,19 @@
       label="E-mail"
       required
     ></v-text-field>
+    <v-text-field
+      v-model="endereco"
+      :rules="emailRules"
+      label="Endereço"
+      required
+    ></v-text-field>
 
     <v-btn
       color="#388E3C"
       dark
       style="margin-left: 180px;"
       large
+      @click="sendUser()"
     >
       Cadastrar
     </v-btn>
@@ -56,10 +63,14 @@
       valid: true,
       name: '',
       cpfcnpj: '',
+      endereco: '',
+      phone: '',
+      email: '',
+
       cpfcnpjrules: [
          v => !!v || 'CPF / CNPJ é obrigatório'
       ],
-      phone: '',
+
       phoneRules: [
         v => !!v || 'Telefone é obrigatório'
       ],
@@ -67,14 +78,19 @@
         v => !!v || 'Nome é obrigatório',
 
       ],
-      email: '',
+
       emailRules: [
         v => /.+@.+\..+/.test(v) || 'Precisa ser um email válido',
       ],
       select: null,
       checkbox: false,
     }),
+    mounted() {
 
+    },
+    created() {
+
+    },
     methods: {
       validate () {
         this.$refs.form.validate()
@@ -85,23 +101,38 @@
       resetValidation () {
         this.$refs.form.resetValidation()
       },
-    },
-      mounted () {
-    axios
-      .post('https://api.coindesk.com/v1/bpi/currentprice.json')
-      .then(response => (this.info = response))
-  },
-    created() {
-    // POST request using axios with error handling
-    const user = { title: "Vue POST Request Example" };
-    axios.post("https://reqres.in/invalid-url", article)
-      .then(response => this.articleId = response.data.id)
-      .catch(error => {
-        this.errorMessage = error.message;
-        console.error("There was an error!", error);
-      });
-}
+      openDialog () {
+
+      },
+      async sendUser() {
+        const franqueado = {
+
+        nome: this.name,
+        cpfcnpj: this.cpfcnpj,
+        usuario: this.cpfcnpj,
+        senha: "123454",
+        nivel: "1",
+        email: this.email,
+        data_nasc:"2021/04/01",
+        ativo: "1",
+        telefone2: "1212112212",
+        telefone: this.phone,
+        endereco: this.endereco,
+        bairro: "centro",
+        cidade: "niteroi",
+        estado:"rj"
   }
+
+      axios.post("http://localhost:3333/api/newuser", franqueado)
+      .then(response => this.articleId = response.data.id)
+      this.$refs.form.reset()
+       alert('Franqueado cadastrado com sucesso')
+      }
+    },
+
+  }
+
+
 </script>
 
 // nome / cpfcnpj / email / telefone / telefone 2 / endereço - bairro cidade estado

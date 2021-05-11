@@ -4,14 +4,14 @@
     <v-btn @click="$router.push('newuser')" x-large color="#C62828" dark> Novo Franqueado
     <v-icon style="padding:5px;" large dark>mdi-account-plus</v-icon>
     </v-btn>
-    <v-btn @click="$router.push('newproduct')" x-large color="#C62828" dark> Adicionar Produto
-    <v-icon style="padding:5px;" large dark>mdi-shopping</v-icon>
-     </v-btn>
     <v-btn @click="$router.push('reports')" x-large color="#C62828" dark> Relatórios
     <v-icon style="padding:5px;" large dark>mdi-file-document-multiple</v-icon>
     </v-btn>
     <v-btn  x-large color="#C62828" dark> Fazer Anúncio
      <v-icon style="padding:5px;" large dark>mdi-bullhorn</v-icon>
+    </v-btn>
+    <v-btn  x-large color="#C62828" dark> Pedidos de Suporte
+     <v-icon style="padding:5px;" large dark>mdi-headphones</v-icon>
     </v-btn>
 
 
