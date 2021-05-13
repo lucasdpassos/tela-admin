@@ -3,7 +3,7 @@
   <div id="divButtons">
     <v-btn @click="$router.push('franqueados')" x-large color="#C62828" dark> Relatório Franqueados
     </v-btn>
-    <v-btn @click="$router.push('reports')" x-large color="#C62828" dark> Relatório Pedidos
+    <v-btn @click="$router.push('vendas')" x-large color="#C62828" dark> Relatório Pedidos
     </v-btn>
     <v-btn  x-large color="#C62828" dark> Relatório Vendas Registradas
     </v-btn>

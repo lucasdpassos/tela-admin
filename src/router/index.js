@@ -6,6 +6,7 @@ import NewUser from '../views/NewUser.vue'
 import NewProduct from '../views/NewProduct.vue'
 import Reports from '../views/Reports.vue'
 import Franqueados from '../views/Franqueados.vue'
+import Vendas from '../views/Vendas.vue';
 
 Vue.use(VueRouter);
 
@@ -34,6 +35,11 @@ const routes = [
     path: '/franqueados',
     name: 'Franqueados',
     component: Franqueados,
+  },
+  {
+    path: '/vendas',
+    name: 'Vendas',
+    component: Vendas,
   },
   {
     path: '/about',

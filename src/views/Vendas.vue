@@ -5,16 +5,25 @@
       <thead>
         <tr>
           <th class="text-left">
-            Nome
+            Nome do Cliente
           </th>
           <th class="text-left">
-            CPF / CNPJ
+            Pedido
           </th>
           <th class="text-left">
-            Telefone
+            Valor Total
           </th>
           <th class="text-left">
-            Email
+            Frete ou Retirada
+          </th>
+          <th class="text-left">
+            Tipo de Pagamento
+          </th>
+          <th class="text-left">
+            Data do pedido
+          </th>
+          <th class="text-left">
+            Prazo de entrega
           </th>
         </tr>
       </thead>
@@ -23,10 +32,13 @@
           v-for="item in info"
           :key="item.id"
         >
-          <td>{{ item.nome }}</td>
-          <td>{{ item.cpfcnpj }}</td>
-          <td>{{ item.telefone }}</td>
-          <td>{{ item.email }}</td>
+          <td>{{ item.nome_cliente }}</td>
+          <td>{{ item.descricao }}</td>
+          <td>{{ item.valor_pedido }}</td>
+          <td>{{ item.frete }}</td>
+          <td>{{ item.tipo_pg }}</td>
+          <td>{{ item.data_pedido }}</td>
+          <td>{{ item.data_entrega }}</td>
         </tr>
       </tbody>
     </template>
@@ -87,7 +99,7 @@ import axios from 'axios'
       }
     },
     mounted () {
-    axios.get('http://localhost:3333/api/all')
+    axios.get('http://localhost:3333/api/getsells')
         .then(res => (this.info = res.data.rows))
         .catch(error => console.log(error))
 
